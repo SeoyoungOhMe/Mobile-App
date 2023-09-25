@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button} from 'react-native';
 
-var text_st = {fontSize: 30, backgroundColor: 'lightgray', padding:10, margin:10};
+var text_st = {fontSize: 30, padding:10, margin:10};
+var input_st = {fontSize: 30, borderWidth: 1, padding:10, margin: 10};
 
 
 export default function App() {
@@ -14,23 +15,10 @@ export default function App() {
     <ScrollView contentContainerStyle={{paddingTop: 30}}>
       
       <View style={{ flexDirection: "row" }}>
-        <Text style={text_st}>{A}</Text>
-        <Text style={text_st}>{B}</Text>
-      </View>
-      <View style={{margin:10, flexDirection:"row"}}>
-        <Button title="   +   "
-                onPress={ function() { setA(A+1) } } />
-        <View style={{width:30}}></View>
-        <Button title="   +   "
-                onPress={ function() { setB(B+1) } } />
-      </View>
-
-      <View style={{margin:10, flexDirection:"row"}}>
-        <Button title="   -   "
-                onPress={ function() { setA(A-1) } } />   
-        <View style={{width:30}}></View>     
-        <Button title="   -   "
-                onPress={ function() { setB(B-1) } } />
+        <TextInput style={input_st} onChangeText={ setA }/>
+        <Text style={text_st}>+</Text>
+        <TextInput style={input_st} onChangeText={ setB }/>
+        <Text style={text_st}>=  { Number(A) + Number(B) }</Text>
       </View>
       
       
