@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button} from 'react-native';
 
 var text_st = {fontSize: 20, margin:10};
@@ -90,17 +91,17 @@ function HomeScreen({ navigation }) {
   );
 }
 
-const Stack = createStackNavigator();
+const Tab= createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-        <Stack.Screen name="Hello" component={HelloScreen} />
-        <Stack.Screen name="구구단" component={MultScreen} />
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="About" component={AboutScreen} />
+        <Tab.Screen name="Hello" component={HelloScreen} />
+        <Tab.Screen name="구구단" component={MultScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
