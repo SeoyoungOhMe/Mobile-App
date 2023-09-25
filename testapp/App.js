@@ -16,9 +16,9 @@ export default function App() {
       
       <View style={{ flexDirection: "row" }}>
         <TextInput style={input_st} onChangeText={ setA }/>
-        <Text style={text_st}>+</Text>
+        <Text style={text_st}>x</Text>
         <TextInput style={input_st} onChangeText={ setB }/>
-        <Text style={text_st}>=  { Number(A) + Number(B) }</Text>
+        <Text style={text_st}>=  { Number(A) * Number(B) }</Text>
       </View>
       
       
