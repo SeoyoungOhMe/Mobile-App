@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button} from 'react-native';
 
 var text_st = {fontSize: 20, margin:10};
@@ -58,16 +57,16 @@ function MultScreen() {
       <View style={{margin:10, flexDirection:"row"}}>
         <Button title="   +   "
                 onPress={ function() { setA(A+1) } } />
-        <View style={{width:30}}></View>
+        <View style={{width:70}}></View>
         <Button title="   +   "
                 onPress={ function() { setB(B+1) } } />
       </View>
 
       <View style={{margin:10, flexDirection:"row"}}>
-        <Button title="   -   "
+        <Button title="    -   "
                 onPress={ function() { setA(A-1) } } />   
-        <View style={{width:30}}></View>     
-        <Button title="   -   "
+        <View style={{width:70}}></View>     
+        <Button title="    -   "
                 onPress={ function() { setB(B-1) } } />
       </View>
 
@@ -91,17 +90,17 @@ function HomeScreen({ navigation }) {
   );
 }
 
-const Tab= createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="About" component={AboutScreen} />
-        <Tab.Screen name="Hello" component={HelloScreen} />
-        <Tab.Screen name="구구단" component={MultScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="Hello" component={HelloScreen} />
+        <Stack.Screen name="구구단" component={MultScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
