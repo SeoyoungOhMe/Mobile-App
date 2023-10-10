@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
+
+key_st = {flex:1, margin:5, backgroundColor:'rgba(100, 100, 100, 0.2)'};
 
 async function play00(){
   console.log('Loading Sound');
@@ -28,17 +30,43 @@ async function play05(){
   s.sound.playAsync();
 }
 
+async function play07(){
+  var s = await Audio.Sound.createAsync(require('./assets/note07.m4a'));
+  s.sound.playAsync();
+}
+
+async function play09(){
+  var s = await Audio.Sound.createAsync(require('./assets/note09.m4a'));
+  s.sound.playAsync();
+}
+
+async function play11(){
+  var s = await Audio.Sound.createAsync(require('./assets/note11.m4a'));
+  s.sound.playAsync();
+}
+
+async function play12(){
+  var s = await Audio.Sound.createAsync(require('./assets/note12.m4a'));
+  s.sound.playAsync();
+}
+
 export default function App() {
   return (
-    <View style={ {paddingTop:50} } >
-      <View onTouchStart={ play00 }><Text style={{fontSize:30}}>Do</Text></View>
-      <View onTouchStart={ play02 }><Text style={{fontSize:30}}>Re</Text></View>
-      <View onTouchStart={ play04 }><Text style={{fontSize:30}}>Mi</Text></View>
-      <View onTouchStart={ play05 }><Text style={{fontSize:30}}>Fa</Text></View>
+    <View style={ {flex:1, marginTop:30} } >
+      <ImageBackground style={{height:'100%', width:'100%'}}
+          resizeMode="stretch" source={require('./assets/keyboard.png')}>
+        <View style={key_st} onTouchStart={ play00 }></View>
+        <View style={key_st} onTouchStart={ play02 }></View>        
+        <View style={key_st} onTouchStart={ play04 }></View>
+        <View style={key_st} onTouchStart={ play05 }></View>      
+        <View style={key_st} onTouchStart={ play07 }></View>      
+        <View style={key_st} onTouchStart={ play09 }></View>      
+        <View style={key_st} onTouchStart={ play11 }></View>      
+        <View style={key_st} onTouchStart={ play12 }></View>      
+      </ImageBackground>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
