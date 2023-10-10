@@ -31,10 +31,10 @@ async function play05(){
 export default function App() {
   return (
     <View style={ {paddingTop:50} } >
-      <Button title="Play Sound" onPress={ play00 } />
-      <Button title="Play Sound" onPress={ play02 } />
-      <Button title="Play Sound" onPress={ play04 } />
-      <Button title="Play Sound" onPress={ play05 } />
+      <View onTouchStart={ play00 }><Text style={{fontSize:30}}>Do</Text></View>
+      <View onTouchStart={ play02 }><Text style={{fontSize:30}}>Re</Text></View>
+      <View onTouchStart={ play04 }><Text style={{fontSize:30}}>Mi</Text></View>
+      <View onTouchStart={ play05 }><Text style={{fontSize:30}}>Fa</Text></View>
     </View>
   );
 }
