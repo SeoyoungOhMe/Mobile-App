@@ -5,13 +5,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-var L = [  ];
-
-for(var i = 0; i < 10; i++)
-  L.push( <Text>{i} {i*i}</Text> );
+var N = ['Ewha', 'June', 'Jane', 'Nick'];
+var P = [1234, 3347, 1111, 1212];
 
 export default function App() {
-  return <View style={{marginTop:30}}>{L}</View>
+  
+  var L = [ ];
+
+  for(var i = 0; i < N.length; i++){
+    var a = <Text style={{fontSize:20}}>{N[i]} : {P[i]}</Text>
+    L.push(a);
+  }
+
+  return <View style={{marginTop:30}}>
+    <Text style={{fontSize:40}}>Phone Book</Text>
+    {L}
+  </View>
 }
 
 const styles = StyleSheet.create({
@@ -20,5 +29,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
