@@ -5,15 +5,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-var name = 'Ewha';
-var element = <Text>Hello {name}</Text>
+var L = [ <Text>Hello</Text>, <Text>Ewha</Text> ];
 
-for(var i = 0; i < 5; i++){
-  element = <View style={{borderWidth:1, padding:10}}>{element}</View>
-}
+for(var i = 0; i < 10; i++)
+  L.push( <Text>count {i}</Text> );
+
+for(var i = 0; i < 3; i++)
+  L.push( <Image style={{width:100, height:100}}  source={require('./cat-icon.png')}/> );
 
 export default function App() {
-  return <View style={{marginTop:30}}>{element}</View>
+  return <View style={{marginTop:30}}>{L}</View>
 }
 
 const styles = StyleSheet.create({
