@@ -20,6 +20,12 @@ export default function App() {
     P.push(phone);
     setRefresh(refresh+1);
   }
+
+  function del_item() {
+    N.pop(name);
+    P.pop(phone);
+    setRefresh(refresh+1);
+  }
   
   var L = [ ];
 
@@ -34,7 +40,7 @@ export default function App() {
        <View style={{width:5}}></View>
        <View style={{width: "48%", borderWidth:1, padding:3}}>{p}</View>
      </View>
-     
+
     L.push(a);
   }
 
@@ -44,6 +50,8 @@ export default function App() {
       <TextInput style={input_st} onChangeText={setName} />
       <TextInput style={input_st} onChangeText={setPhone}/>
       <Button title=" Add " onPress={add_item}  />
+      <View style={{width:5}}></View>
+      <Button title=" Del " onPress={del_item}  />
     </View>
     {L}
   </View>
