@@ -5,13 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-var L = [ <Text>Hello</Text>, <Text>Ewha</Text> ];
+var L = [  ];
 
 for(var i = 0; i < 10; i++)
-  L.push( <Text>count {i}</Text> );
-
-for(var i = 0; i < 3; i++)
-  L.push( <Image style={{width:100, height:100}}  source={require('./cat-icon.png')}/> );
+  L.push( <Text>{i} {i*i}</Text> );
 
 export default function App() {
   return <View style={{marginTop:30}}>{L}</View>
