@@ -5,37 +5,55 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-var st_container = {
-  marginTop: 50,
-};
-
-var st_bigBlue = {
-  color: 'blue',
-  fontWeight: 'bold',
-  fontSize: 30,
+function Circle(){
+  return <View style={styles.circle} />;
 }
 
-var st_red = {
-  color: 'red',
+function Blank() {
+  return <View style={ [styles.circle, {backgroundColor: undefined, borderWidth: 0}] } />;
+}
+
+const styles = StyleSheet.create({
+  circle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20, 
+    backgroundColor: 'rgb(0, 200, 255)',
+    borderWidth: 1,
+    margin: 2,
+  },
+  dice: {
+    backgroundColor: 'rgb(255, 240, 200)',
+    padding: 10,
+  }
+});
+
+function Dice() {
+  return(
+    <View style={styles.dice}>
+      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+    </View>
+  );
+}
+
+function Dice6() {
+  return(
+    <View style={styles.dice}>
+      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+    </View>
+  );
 }
 
 export default function App() {
   return (
-    <View style={st_container}>
-      <Text style={st_red}>just red</Text>
-      <Text style={st_bigBlue}>just bigBlue</Text>
-      <Text style={ [st_bigBlue, st_red] }>bigBlue, then red</Text>
-      <Text style={ [st_bigBlue, st_red, {fontSize:20}] }>
-        bigBlue, then red, then 20</Text>
+    <View style={{flex:1, marginTop:40, alignItems:'center'}}>
+      <Dice/>
+      <View style={{height:20}}/>
+      <Dice6/>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
