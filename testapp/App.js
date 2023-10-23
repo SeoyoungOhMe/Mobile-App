@@ -89,16 +89,27 @@ function Dice(props) {
 export default function App() {
 
   const [N, setN] = useState(1)
+  const [M, setM] = useState(1)
 
   return (
     <View style={{flex:1, marginTop:40}}>
       <Text style={styles.text}>Dice</Text>
-      <View style={{flexDirection:'row', justifyContent:'center'}}>
-        <Dice num={N} />
+      <Text style={styles.text}>{M+N}</Text>
+      <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
+        <View style={{flexDirection:'row', justifyContent:'center'}}>
+          <Dice num={N} />
+        </View>
+        <View style={{flexDirection:'row', justifyContent:'center'}}>
+          <Dice num={M} />
       </View>
+      </View>
+      
       <View style={{marginHorizontal:100, marginVertical:30}}>
         <Button title="Roll" onPress={
-          function() {setN(Math.floor(Math.random() * 6 + 1)); } } />
+          function() {
+            setN(Math.floor(Math.random() * 6 + 1)); 
+            setM(Math.floor(Math.random() * 6 + 1)); 
+            } } />
       </View>
     </View>
   );
