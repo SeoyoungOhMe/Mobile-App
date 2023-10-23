@@ -28,14 +28,57 @@ const styles = StyleSheet.create({
   }
 });
 
-function Dice() {
-  return(
+function Dice(props) {
+  if(props.num == 1){
+    return(
     <View style={styles.dice}>
-      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
-      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
-      <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
     </View>
-  );
+    );
+  } else if(props.num == 2) {
+    return(
+      <View style={styles.dice}>
+      <View style={{flexDirection:'row'}}><Circle/><Blank/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Blank/><Circle/></View>
+      </View>
+      );
+  }  else if(props.num == 3) {
+    return(
+      <View style={styles.dice}>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
+      <View style={{flexDirection:'row'}}><Blank/><Blank/><Circle/></View>
+      </View>
+      );
+  } else if(props.num == 4) {
+    return(
+      <View style={styles.dice}>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+      </View>
+      );
+  } else if(props.num == 5) {
+    return(
+      <View style={styles.dice}>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+      </View>
+      );
+  } else {
+    return(
+      <View style={styles.dice}>
+        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+      </View>
+      );
+  }
+  
 }
 
 function Dice6() {
@@ -51,9 +94,17 @@ function Dice6() {
 export default function App() {
   return (
     <View style={{flex:1, marginTop:40, alignItems:'center'}}>
-      <Dice/>
-      <View style={{height:20}}/>
-      <Dice6/>
+      <Dice num={1}/>
+      <View style={{height:20}} />
+      <Dice num={2}/>
+      <View style={{height:20}} />
+      <Dice num={3}/>
+      <View style={{height:20}} />
+      <Dice num={4}/>
+      <View style={{height:20}} />
+      <Dice num={5}/>
+      <View style={{height:20}} />
+      <Dice num={6}/>
     </View>
   )
 }
