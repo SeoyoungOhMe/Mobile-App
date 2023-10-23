@@ -5,56 +5,30 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-var input_st = {fontSize:20, borderWidth:1, flex:1, padding:5, margin:5};
+var st_container = {
+  marginTop: 50,
+};
 
-var N = ['Ewha', 'June', 'Jane', 'Nick'];
-var P = [1234, 3347, 1111, 1212];
+var st_bigBlue = {
+  color: 'blue',
+  fontWeight: 'bold',
+  fontSize: 30,
+}
+
+var st_red = {
+  color: 'red',
+}
 
 export default function App() {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [refresh, setRefresh] = useState(0);
-
-  function add_item() {
-    N.push(name);
-    P.push(phone);
-    setRefresh(refresh+1);
-  }
-
-  function del_item() {
-    N.pop(name);
-    P.pop(phone);
-    setRefresh(refresh+1);
-  }
-  
-  var L = [ ];
-
-  for(var i = 0; i < N.length; i++){
-    //var a = <Text style={{fontSize:20}}>{N[i]} : {P[i]}</Text>
-
-    var n = <Text style={{fontSize:20}}>{N[i]}</Text>
-     var p = <Text style={{fontSize:20}}>{P[i]}</Text>
-
-     var a = <View style={{flexDirection: "row"}}>
-       <View style={{width: "50%", borderWidth:1, padding:3}}>{n}</View>
-       <View style={{width:5}}></View>
-       <View style={{width: "48%", borderWidth:1, padding:3}}>{p}</View>
-     </View>
-
-    L.push(a);
-  }
-
-  return <View style={{marginTop:30}}>
-    <Text style={{fontSize:40}}>Phone Book</Text>
-    <View style={{margin:10, flexDirection:"row"}}>
-      <TextInput style={input_st} onChangeText={setName} />
-      <TextInput style={input_st} onChangeText={setPhone}/>
-      <Button title=" Add " onPress={add_item}  />
-      <View style={{width:5}}></View>
-      <Button title=" Del " onPress={del_item}  />
+  return (
+    <View style={st_container}>
+      <Text style={st_red}>just red</Text>
+      <Text style={st_bigBlue}>just bigBlue</Text>
+      <Text style={ [st_bigBlue, st_red] }>bigBlue, then red</Text>
+      <Text style={ [st_bigBlue, st_red, {fontSize:20}] }>
+        bigBlue, then red, then 20</Text>
     </View>
-    {L}
-  </View>
+  )
 }
 
 const styles = StyleSheet.create({
