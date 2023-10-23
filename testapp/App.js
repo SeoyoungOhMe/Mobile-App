@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 2,
   },
+  text: {
+    textAlign: 'center',
+    fontSize: 20,
+    margin: 5,
+  },
   dice: {
     backgroundColor: 'rgb(255, 240, 200)',
     padding: 10,
@@ -72,39 +77,29 @@ function Dice(props) {
   } else {
     return(
       <View style={styles.dice}>
-        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Circle/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
       </View>
       );
   }
   
 }
 
-function Dice6() {
-  return(
-    <View style={styles.dice}>
-      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-      <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
+export default function App() {
+
+  const [N, setN] = useState(1)
+
+  return (
+    <View style={{flex:1, marginTop:40}}>
+      <Text style={styles.text}>Dice</Text>
+      <View style={{flexDirection:'row', justifyContent:'center'}}>
+        <Dice num={N} />
+      </View>
+      <View style={{marginHorizontal:100, marginVertical:30}}>
+        <Button title="Roll" onPress={
+          function() {setN(Math.floor(Math.random() * 6 + 1)); } } />
+      </View>
     </View>
   );
-}
-
-export default function App() {
-  return (
-    <View style={{flex:1, marginTop:40, alignItems:'center'}}>
-      <Dice num={1}/>
-      <View style={{height:20}} />
-      <Dice num={2}/>
-      <View style={{height:20}} />
-      <Dice num={3}/>
-      <View style={{height:20}} />
-      <Dice num={4}/>
-      <View style={{height:20}} />
-      <Dice num={5}/>
-      <View style={{height:20}} />
-      <Dice num={6}/>
-    </View>
-  )
 }
