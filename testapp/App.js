@@ -5,36 +5,38 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
 import { Audio } from 'expo-av';
 
-var text_st = {fontSize:30, padding:10, margin:10};
-var button_st = {color: 'dodgerblue'}
-
-export default function App() {
-  const [N, setN] = useState(0)
-
-  return (
-    <View style={{ flex:1, marginTop:40, alignItems: 'center' }}>
-      <Text style={text_st}>Touched {N} times</Text>
-
-      <TouchableHighlight underlayColor='orange' onPress={function () {setN(N+1); }}>
-        <View>
-          <Text style={[text_st, button_st]}>High, Touch Me</Text>
-        </View>
-      </TouchableHighlight>
-
-      <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('#2196F3')} onPress={function () {setN(N-1); }}>
-        <View>
-          <Text style={[text_st, button_st]}>High, Touch Me</Text>
-        </View>
-      </TouchableNativeFeedback>
+function BoxGroup(props) {
+  return(
+    <View style={styles.box}>
+      {props.children}
     </View>
   );
 }
 
+export default function App() {
+
+  return (
+   <View style={{flex:1, marginTop:40, alignItems:'center'}}>
+    <BoxGroup>
+      <Text style={styles.text}>ABCD</Text>
+      <Text style={styles.text}>123</Text>
+      <Button title="OK" />
+    </BoxGroup>
+   </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  box: {
+    borderColor: 'blue',
+    borderWidth: 2, 
+    margin: 5,
+    padding: 5,
   },
+  text: {
+    backgroundColor: 'wheat',
+    fontSize: 30,
+    margin: 2,
+    padding: 2,
+  }
 });
