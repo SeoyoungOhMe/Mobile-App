@@ -17,15 +17,16 @@ export default function App() {
 
   return (
    <View style={{flex:1, marginTop:40, alignItems:'center'}}>
-
     <BoxGroup>
-      <Text style={styles.text}>ABCD</Text>
-      <Button title="OK" />
-    </BoxGroup>
+      <BoxGroup>
+        <Text style={styles.text}>ABCD</Text>
+        <Button title="OK" />
+      </BoxGroup>
 
-    <BoxGroup>
-      <Text style={styles.text}>123</Text>
-      <Button title="OK" />
+      <BoxGroup>
+        <Text style={styles.text}>123</Text>
+        <Button title="OK" />
+      </BoxGroup>
     </BoxGroup>
 
    </View>
