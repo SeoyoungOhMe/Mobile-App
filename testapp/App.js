@@ -5,112 +5,40 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-function Circle(){
-  return <View style={styles.circle} />;
+var text_st = {fontSize:30, padding:10, margin:10};
+var input_st = {fontSize:30, borderWidth:1, padding:10, margin:10};
+
+function Mult(){
+  const [A, setA] = useState(0);
+  const [B, setB] = useState(0);
+
+  return(
+    <View style={{flexDirection:"row"}}>
+    <TextInput style={input_st} onChangeText={ setA }/>
+    <Text style={text_st}>x</Text>
+    <TextInput style={input_st} onChangeText={ setB }/>
+    <Text style={text_st}>=  { Number(A) * Number(B) }</Text>
+  </View>
+  )
+  
+
 }
 
-function Blank() {
-  return <View style={ [styles.circle, {backgroundColor: undefined, borderWidth: 0}] } />;
+export default function App(){
+  return (
+    <View style={ {paddingTop:30} } >
+      <Mult/>
+      <Mult/>
+      <Mult/>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20, 
-    backgroundColor: 'rgb(0, 200, 255)',
-    borderWidth: 1,
-    margin: 2,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  text: {
-    textAlign: 'center',
-    fontSize: 20,
-    margin: 5,
-  },
-  dice: {
-    backgroundColor: 'rgb(255, 240, 200)',
-    padding: 10,
-  }
 });
-
-function Dice(props) {
-  if(props.num == 1){
-    return(
-    <View style={styles.dice}>
-      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
-    </View>
-    );
-  } else if(props.num == 2) {
-    return(
-      <View style={styles.dice}>
-      <View style={{flexDirection:'row'}}><Circle/><Blank/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Blank/><Circle/></View>
-      </View>
-      );
-  }  else if(props.num == 3) {
-    return(
-      <View style={styles.dice}>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
-      <View style={{flexDirection:'row'}}><Blank/><Blank/><Circle/></View>
-      </View>
-      );
-  } else if(props.num == 4) {
-    return(
-      <View style={styles.dice}>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Blank/><Blank/><Blank/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-      </View>
-      );
-  } else if(props.num == 5) {
-    return(
-      <View style={styles.dice}>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Blank/><Circle/><Blank/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-      </View>
-      );
-  } else {
-    return(
-      <View style={styles.dice}>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-        <View style={{flexDirection:'row'}}><Circle/><Blank/><Circle/></View>
-      </View>
-      );
-  }
-  
-}
-
-export default function App() {
-
-  const [N, setN] = useState(1)
-  const [M, setM] = useState(1)
-
-  return (
-    <View style={{flex:1, marginTop:40}}>
-      <Text style={styles.text}>Dice</Text>
-      <Text style={styles.text}>{M+N}</Text>
-      <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
-        <View style={{flexDirection:'row', justifyContent:'center'}}>
-          <Dice num={N} />
-        </View>
-        <View style={{flexDirection:'row', justifyContent:'center'}}>
-          <Dice num={M} />
-      </View>
-      </View>
-      
-      <View style={{marginHorizontal:100, marginVertical:30}}>
-        <Button title="Roll" onPress={
-          function() {
-            setN(Math.floor(Math.random() * 6 + 1)); 
-            setM(Math.floor(Math.random() * 6 + 1)); 
-            } } />
-      </View>
-    </View>
-  );
-}
