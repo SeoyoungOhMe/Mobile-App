@@ -11,6 +11,7 @@ export default function App() {
   const [hh, sethh] = useState("");
   const [mm, setmm] = useState("");
   const [ss, setss] = useState("");
+  const [ap, setap] = useState("");
 
   useEffect(function(){
     setInterval(run_everysec, 1000);
@@ -22,11 +23,17 @@ export default function App() {
     setmm(d.getMinutes());
     setss(d.getSeconds());
 
+    if(d.getHours() < 12){
+      setap("am");
+    } else {
+      setap("pm")
+    }
+
   }
 
   return (
     <View style={{paddingTop:30}}>
-      <Text style={text_st}>{hh}:{mm}:{ss}</Text>
+      <Text style={text_st}>{hh}:{mm}:{ss} {ap}</Text>
     </View>
   );
 
