@@ -5,8 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
 import { Audio } from 'expo-av';
 
-var text_st = {fontSize: 60, padding: 10};
-
 export default function App() {
   const [hh, sethh] = useState("");
   const [mm, setmm] = useState("");
@@ -28,15 +26,14 @@ export default function App() {
     } else {
       setap("pm")
     }
-
   }
 
   return (
-    <View style={{paddingTop:30}}>
-      <Text style={text_st}>{hh}:{mm}:{ss} {ap}</Text>
-    </View>
+    <Text style={{...styles.bold, paddingTop: 50}}>
+      <Text>{hh} : {mm}</Text>
+      <Text style={styles.text_st}> {ss} {ap}</Text>
+    </Text>
   );
-
 }
 
 const styles = StyleSheet.create({
@@ -45,5 +42,16 @@ const styles = StyleSheet.create({
    backgroundColor: '#fff',
    alignItems: 'center',
    justifyContent: 'center',
- },
+  },
+  bold: {
+    fontSize: 60,
+    padding: 10,
+    fontWeight: 'bold',
+  },
+  text_st: {
+    fontSize: 60,
+    padding: 10,
+    fontWeight: 'normal',
+  },
 });
+
