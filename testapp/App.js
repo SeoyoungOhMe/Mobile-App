@@ -24,7 +24,8 @@ export default function App() {
     if(d.getHours() < 12){
       setap("am");
     } else {
-      setap("pm")
+      setap("pm");
+      sethh(d.getHours()-12);
     }
 
     if(d.getHours() < 10){
