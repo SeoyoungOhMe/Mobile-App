@@ -30,8 +30,8 @@ export default function App() {
 
   return (
     <Text style={{...styles.bold, paddingTop: 50}}>
-      <Text>{hh} : {mm}</Text>
-      <Text style={styles.text_st}> {ss} {ap}</Text>
+      <Text>{hh}:{mm}:</Text>
+      <Text style={styles.text_st}>{ss} {ap}</Text>
     </Text>
   );
 }
@@ -39,11 +39,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   backgroundColor: '#fff',
-   alignItems: 'center',
-   justifyContent: 'center',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   bold: {
+
     fontSize: 60,
     padding: 10,
     fontWeight: 'bold',
