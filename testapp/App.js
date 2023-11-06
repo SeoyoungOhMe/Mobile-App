@@ -26,6 +26,15 @@ export default function App() {
     } else {
       setap("pm")
     }
+
+    if(d.getHours() < 10){
+      sethh("0"+d.getHours());
+    } else if(d.getMinutes() < 10 ){
+      setmm("0"+d.getMinutes());
+    } else if(d.getSeconds() < 10){
+      setss("0"+d.getSeconds());
+    }
+
   }
 
   return (
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bold: {
-
+    backgroundColor: '#FFCC99',
     fontSize: 60,
     padding: 10,
     fontWeight: 'bold',
