@@ -14,6 +14,7 @@ export default function App() {
   const [temp, setTemp] = useState('');
   const [weather, setWeather] = useState('');
   const [wind, setWind] = useState('');
+  const [icon, setIcon] = useState('');
 
   useEffect(function() {
     fetch(url)
@@ -24,7 +25,9 @@ export default function App() {
         setCountry(json.sys.country);
         setTemp(json.main.temp);
         setWeather(json.weather[0].description);
-        setWind(json.wind.speed); } )
+        setWind(json.wind.speed); 
+        setIcon("http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+      } )
       .catch(function (error) { console.error(error); })
   }, []);
 
@@ -35,6 +38,7 @@ export default function App() {
       <Text style={st_text}>Temp: {temp}</Text>
       <Text style={st_text}>Weather: {weather}</Text>
       <Text style={st_text}>Wind: {wind}</Text>
+      <Image style={{width:100, height:100}} source={{ uri:icon }}/>
     </View>
   );
 }
