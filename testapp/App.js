@@ -8,6 +8,7 @@ import { Audio } from 'expo-av';
 var url = "http://api.openweathermap.org/data/2.5/forecast?q=Seoul&units=metric&cnt=5&appid=6af8dad4784c634d3674f60110f2a015"
 var st_text = { fontSize: 20 };
 
+
 export default function App() {
 //  const [city, setCity] = useState('');
 //  const [country, setCountry] = useState('');
@@ -21,6 +22,12 @@ export default function App() {
   const [weather3, setWeather3] = useState('');
   const [temp4, setTemp4] = useState('');
   const [weather4, setWeather4] = useState('');
+
+  const [sys0, setSys0] = useState('');
+  const [sys1, setSys1] = useState('');
+  const [sys2, setSys2] = useState('');
+  const [sys3, setSys3] = useState('');
+  const [sys4, setSys4] = useState('');
 //  const [wind, setWind] = useState('');
 //  const [icon, setIcon] = useState('');
 
@@ -41,6 +48,12 @@ export default function App() {
         setWeather3(json.list[3].weather[0].description);
         setTemp4(json.list[4].main.temp);
         setWeather4(json.list[4].weather[0].description);
+
+        setSys0(json.list[0].dt_txt.substring(5, 16));
+        setSys1(json.list[1].dt_txt.substring(5, 16));
+        setSys2(json.list[2].dt_txt.substring(5, 16));
+        setSys3(json.list[3].dt_txt.substring(5, 16));
+        setSys4(json.list[4].dt_txt.substring(5, 16));
 //        setWind(json.wind.speed); 
 //        setIcon("http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
       } )
@@ -49,11 +62,11 @@ export default function App() {
 
   return (
     <View style={{ flex:1, marginTop: 30, padding: 20 }}>
-      <Text style={st_text}>{`${temp0} ${weather0}`}</Text>
-      <Text style={st_text}>{`${temp1} ${weather1}`}</Text>
-      <Text style={st_text}>{`${temp2} ${weather2}`}</Text>
-      <Text style={st_text}>{`${temp3} ${weather3}`}</Text>
-      <Text style={st_text}>{`${temp4} ${weather4}`}</Text>
+      <Text style={st_text}>{`${sys0}\t${temp0}\t${weather0}`}</Text>
+      <Text style={st_text}>{`${sys1}\t${temp1}\t${weather1}`}</Text>
+      <Text style={st_text}>{`${sys2}\t${temp2}\t${weather2}`}</Text>
+      <Text style={st_text}>{`${sys3}\t${temp3}\t${weather3}`}</Text>
+      <Text style={st_text}>{`${sys4}\t${temp4}\t${weather4}`}</Text>
     </View>
   );
 }
