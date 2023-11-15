@@ -1,30 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, ImageBackground} from 'react-native';
 import { Audio } from 'expo-av';
 
-export default function App() {
+var input_st = {fontSize:20, borderWidth:1, flex:1, padding:5, margin:5};
 
-  return (
-    <ScrollView 
-      contentContainerStyle={{borderColor:'red', borderWidth:10}}
-      style={{ borderColor:'blue', borderWidth:10, paddingTop:50 }}>
-      <Text style={{fontSize:40, color:'blue'}}>Hello Ewha</Text>
-      <Text>Nice to meet you</Text>
-      <Text style={{fontSize:20}}>Nice to meet you</Text>
-      <Text style={{fontSize:30}}>Nice to meet you</Text>
-      <Image style={{width:200, height:200}} source={require('./cat-icon.png')} />
-      <Image style={{width:200, height:200}} source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}} />
-      <Text style={{fontSize:20}}>Nice to meet you</Text>
-      <Text style={{fontSize:30}}>Nice to meet you</Text>
-      <Image style={{width:200, height:200}} source={require('./cat-icon.png')} />
-      <Text style={{fontSize:20}}>Nice to meet you</Text>
-      <Text style={{fontSize:30}}>Nice to meet you</Text>
-      <Image style={{width:200, height:200}} source={require('./cat-icon.png')} />
-    </ScrollView>
-  );
+var pbook = [{name:'Ewha', phone:1234}, {name:'June', phone:3347},
+            {name:'Jane', phone:1111},{name:'Nick', phone:1212}]
+
+export default function App() {
+  
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [refresh, setRefresh] = useState('');
+
+    function add_item(){
+      pbook.push({ name: name, phone:phone });
+      setRefresh(refresh+1);
+    }
+
+    var L = [];
+
+    for (var i=0; i<pbook.length; i++){
+      var a = <Text style={{ fontSize: 20 }}>{pbook[i].name} : {pbook[i].phone}</Text>
+      L.push(a);
+    }
+
+    return <View style={{marginTop:50}}>
+      <Text style={{fontSize:40}}>Phone Book</Text>
+      <View style={{margin:10, flexDirection: "row"}}>
+        <TextInput style={input_st} onChangeText={setName} />
+        <TextInput style={input_st} onChangeText={setPhone} />
+        <Button title="  ADD  " onPress={add_item} />
+      </View>
+      {L}
+    </View>
+    
+  
 }
 
 const styles = StyleSheet.create({
@@ -34,6 +48,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   }
-  },
-);
-
+});
