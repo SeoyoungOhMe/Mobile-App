@@ -57,11 +57,26 @@ export default function App() {
 
   return (
     <View style={{ flex:1, marginTop: 30, padding: 20 }}>
-      <Text style={st_text}>{`${icon0}\t${temp0}\t${weather0}`}</Text>
-      <Text style={st_text}>{`${icon1}\t${temp1}\t${weather1}`}</Text>
-      <Text style={st_text}>{`${icon2}\t${temp2}\t${weather2}`}</Text>
-      <Text style={st_text}>{`${icon3}\t${temp3}\t${weather3}`}</Text>
-      <Text style={st_text}>{`${icon4}\t${temp4}\t${weather4}`}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: icon0 }} />
+        <Text style={st_text}>{`\t${temp0}\t${weather0}`}</Text>
+      </View> 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: icon1 }} />
+        <Text style={st_text}>{`\t${temp1}\t${weather1}`}</Text>
+      </View> 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: icon2 }} />
+        <Text style={st_text}>{`\t${temp2}\t${weather2}`}</Text>
+      </View> 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: icon3 }} />
+        <Text style={st_text}>{`\t${temp3}\t${weather3}`}</Text>
+      </View> 
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: icon4 }} />
+        <Text style={st_text}>{`\t${temp4}\t${weather4}`}</Text>
+      </View> 
     </View>
   );
 }
