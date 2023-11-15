@@ -9,8 +9,8 @@ export default function App() {
 
   return (
     <ScrollView 
-      contentContainerStyle={{paddingTop:50, borderColor:'red', borderWidth:10}}
-      style={{ borderColor:'blue', borderWidth:10}}>
+      contentContainerStyle={{borderColor:'red', borderWidth:10}}
+      style={{ borderColor:'blue', borderWidth:10, marginTop: 30}}>
       <Text style={{fontSize:40, color:'blue'}}>Hello Ewha</Text>
       <Text>Nice to meet you</Text>
       <Text style={{fontSize:20}}>Nice to meet you</Text>
