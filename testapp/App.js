@@ -7,76 +7,44 @@ import { Audio } from 'expo-av';
 import CalendarPicker from 'react-native-calendar-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Stack = createStackNavigator();
+var text_st = {fontSize:20, borderWidth:1, borderColor:'gray', flex:1, padding:5, margin:2};
+
+var input_st = {
+  fontSize:20, borderWidth: 1, flex: 1, padding: 5, margin: 5
+};
+
+var pbook = [{ name: 'Ewha', phone: 1234 }, { name: 'June', phone: 3347 }, { name: 'Jane', phone: 1111}, { name: 'Nick', phone: 1212 }];
 
 export default function App() {
-  return(
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Memo" component={MemoScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
 
-function HomeScreen({ navigation }){
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [refresh, setRefresh] = useState(0);
 
-  async function date_change(d) {
-    console.log(d.format('YYYYMMDD'));
-    var date = d.format('YYYYMMDD');
-
-    var val_expense = '';
-    var val_memo = '';
-
-    var value = await AsyncStorage.getItem(date);
-    var value_m = await AsyncStorage.getItem(date + 'm');
-
-    console.log(value);
-
-    if (value !== null) {
-      val_expense = value;
-      val_memo = value_m;
-    }
-
-    navigation.navigate('Memo',
-    {date: d, expense: val_expense, memo: val_memo });
+  function add_item() {
+    pbook.push({ name: name, phone: phone });
+    setRefresh(refresh + 1);
   }
 
-  return (
-    <View style={styles.container}>
-      <CalendarPicker onDateChange={date_change}/>
+  var L = [];
+
+  for (var i = 0; i< pbook.length; i++) {
+    var a = <View style={{flexDirection: 'row'}}>
+      <Text style={text_st}>{pbook[i].name}</Text>
+      <Text style={text_st}>{pbook[i].phone}</Text>
     </View>
-  );
-}
+    L.push(a);
+  }
 
-function MemoScreen({ route, navigation }){
-
-  var d = route.params.date;
-
-  const [date, setDate] = useState('YYYYMMDD');
-  const [date1, setDate1] = useState('MMMM DD, YYYY');
-  const [expense, setExpense] = useState(route.params.expense);
-  const [memo, setMemo] = useState(route.params.memo);
-
-  async function save_memo(){
-      await AsyncStorage.setItem(date, expense)
-      await AsyncStorage.setItem(date+'m', memo)
-    }
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.box}>
-          <Text style={styles.datetext}>{ date1 }</Text>
-          <View style={styles.row}>
-            <Text style={styles.text}>Expense</Text>
-            <TextInput style={styles.expense} keyboardType="numeric" onChangeText={setExpense} />
-            <Button title="Save" />
-          </View>
-          <TextInput style={styles.memo} placeholder='Memo' onChangeText={setMemo} />
-        </View>
-      </View>
-    );
+  return <View style={{marginTop: 30}}>
+    <Text style={{fontSize: 40}}>Phone Book</Text>
+    <View style={{margin: 10, flexDirection: "row", alignItems: 'center'}}>
+      <TextInput style={input_st} onChangeText={setName} />
+      <TextInput style={input_st} onChangeText={setPhone} />
+      <Button title="   Add   " onPress={add_item} />
+    </View>
+    {L}
+  </View>
 }
 
 
