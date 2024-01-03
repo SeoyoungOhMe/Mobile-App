@@ -21,7 +21,7 @@ $ npx expo
 - 앱에 들어간 모든 그림은 직접 그렸습니다.
 
 ## 화면 예시
-![IMG_3004](https://github.com/SeoyoungOhMe/Mobile-App/assets/96602351/bf120995-35c4-46c1-be4e-297df0fd9dea){: width="100" height="100"}
+![IMG_3004](https://github.com/SeoyoungOhMe/Mobile-App/assets/96602351/bf120995-35c4-46c1-be4e-297df0fd9dea){: height="50"}
 ![IMG_2833 2](https://github.com/SeoyoungOhMe/Mobile-App/assets/96602351/ba150cc3-97f6-4ab7-8677-fb5758dab855){: width="100" height="100"}
 ![IMG_2834 2](https://github.com/SeoyoungOhMe/Mobile-App/assets/96602351/34c6edbc-dc24-4960-9096-124de2f83c8c){: width="100" height="100"}
 
